@@ -20,6 +20,5 @@
     "req-flash": "0.0.3",
     "session": "^0.1.0"
   },
-  "license": "ISC",
-  "proxy": "http://localhost:5000/"
+  "license": "ISC"
 }

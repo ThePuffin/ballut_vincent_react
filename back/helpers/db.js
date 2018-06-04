@@ -4,10 +4,9 @@ const mysql = require("mysql");
 const connection = mysql.createConnection({
   username: "root",
   password: "jecode4wcs",
-  database: "users",
-  port: 3307,
-//   host: "127.0.0.1"
-  host: "localhost"
+  database: "react",
+  port: 3306,
+  host: "127.0.0.1"
 });
 
 module.exports = connection;

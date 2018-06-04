@@ -4,24 +4,24 @@ const connection = require("../../helpers/db.js");
 
 //route en post pour signup
 router.post("/signup", (req, res, next) => {
-  console.log(req.body);
-  const post = {
+  // console.log(req.body);
+  const user = {
     email: req.body.email,
     password: req.body.password,
     name: req.body.name,
     lastname: req.body.lastname
   };
 
-  const query = connection.query("INSERT INTO users SET ?", post, function(
+  const query = connection.query("INSERT INTO users SET ?", user, function(
     error,
     results,
     fields
   ) {
     if (error) {
       res.status(500).end();
+    } else {
+      res.end();
     }
-
-    res.end();
   });
   res.send("I am in Post signup");
 });
