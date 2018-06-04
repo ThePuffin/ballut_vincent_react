@@ -33,10 +33,10 @@ app.use(express.static(__dirname + "/public"));
 const authRouter = require("./routes/auth/auth");
 app.use("/auth", authRouter);
 
-//j'implémentation la partie API
-app.get("/", (req, res) => {
-  res.send("I'll be back !");
-});
+// //j'implémentation la partie API
+// app.get("/", (req, res) => {
+//   res.send("I'll be back !");
+// });
 
 // routage signup
 // app.get("/signup", (req, res) => {

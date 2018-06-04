@@ -1,4 +1,7 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 class SignUp extends React.Component {
   constructor() {
@@ -18,6 +21,7 @@ class SignUp extends React.Component {
 
   //action au moment de la validation
   handleSubmit(event) {
+    
     fetch("/auth/signup", {
       method: "POST",
       headers: new Headers({
@@ -37,6 +41,7 @@ class SignUp extends React.Component {
     let objJson = JSON.stringify(this.state, null, 2);
     event.preventDefault();
     console.log(objJson);
+    toast(this.state.flash);
   }
   //changement du state email au changement d'un champ du mail
   // mailRafraichir(event) {
@@ -49,63 +54,38 @@ class SignUp extends React.Component {
     // console.log(event.target.name , event.target.value)
     this.setState({ [event.target.id]: event.target.value });
   }
-
+  
   render(element) {
     // const all = JSON.stringify(this.state, null, 2);
-    return (
-      <div>
+    return <div>
         {/* <h1>
           <pre> Actuellement vous avez ces données : {all}</pre>
-        </h1>{" "} */}
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <label>Nom :</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="entrez votre email"
-            value={this.state.email}
-            onChange={this.allRafraichir}
-          />{" "}
+        </h1> */}
+        <form onSubmit={this.handleSubmit}>
+          <label>Email :</label>
+          <input type="email" id="email" placeholder="entrez votre email" // value={this.state.email}
+            onChange={this.allRafraichir} />
           <br />
           <label>Password : </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="entrez votre mot de passe"
-            value={this.state.password}
-            onChange={this.allRafraichir}
-          />{" "}
+          <input type="password" id="password" placeholder="entrez votre mot de passe" // value={this.state.password}
+            onChange={this.allRafraichir} />
           <br />
           <label>Verification du password : </label>
-          <input
-            type="password"
-            id="verifpassword"
-            placeholder="confirmez votre mot de passe"
-            value={this.state.verifpassword}
-            onChange={this.allRafraichir}
-          />{" "}
+          <input type="password" id="verifpassword" placeholder="confirmez votre mot de passe" // value={this.state.verifpassword}
+            onChange={this.allRafraichir} />
           <br />
           <label>Nom : </label>
-          <input
-            type="text"
-            id="name"
-            placeholder="entrez votre prénom"
-            value={this.state.name}
-            onChange={this.allRafraichir}
-          />{" "}
+          <input type="text" id="name" placeholder="entrez votre prénom" // value={this.state.name}
+            onChange={this.allRafraichir} />
           <br />
           <label>Prenom : </label>
-          <input
-            type="text"
-            id="lastname"
-            placeholder="entrez votre nom"
-            value={this.state.lastname}
-            onChange={this.allRafraichir}
-          />{" "}<br/>
+          <input type="text" id="lastname" placeholder="entrez votre nom" // value={this.state.lastname}
+            onChange={this.allRafraichir} />
+          <br />
           <input type="submit" value="Soumettre" />
-        </form>{" "}
-      </div>
-    );
+        </form>
+        <ToastContainer autoClose={2000} />
+      </div>;
   }
 }
 
