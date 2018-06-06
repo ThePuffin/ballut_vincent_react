@@ -18,14 +18,15 @@ router.post("/signup", (req, res, next) => {
     fields
   ) {
     console.log(error);
-    try{
-      console.log("ok");
-       res.status(200).json({ flash: "user has been signup" })
-    }
-    catch(error) {
-        console.log("erreur");
-        res.status(500).json({ flash: error.message });
-    } 
+     if (error) {
+       console.log("erreur");
+       res.status(500).json({ flash: error.message });
+       return res.status(500).end();
+     } else {
+       console.log("ok");
+       res.status(200).json({ flash: "user has been signup" });
+       return res.end();
+     }
 
     res.end();
   });

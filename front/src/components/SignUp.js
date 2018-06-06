@@ -19,8 +19,6 @@ class SignUp extends React.Component {
     // this.callApi = this.callApi.bind(this);
   }
 
-  //solution de Samir
-
   handleSubmit(e) {
     e.preventDefault();
     // console.log(this.state);
@@ -39,9 +37,14 @@ class SignUp extends React.Component {
           }),
         err => this.setState({ flash: err.flash })
       );
-      toast(this.state.flash);
+    // toast(this.state.flash);
   }
 
+  componentDidUpdate() {
+    if (this.state.flash !== "") {
+      toast(this.state.flash);
+    }
+  }
 
   //changement du state au changement d'un des inputs
   allRafraichir(event) {
